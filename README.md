@@ -3,7 +3,7 @@
 ## Raspberry Pi Vehicle Access Control System
 
 ## Overview
-This project is a Raspberry Pi-based vehicle access control system using two-factor authentication (2FA) with GSM technology. It's designed to manage and control access to vehicles, enhancing security by requiring authentication before access is granted. The system uses RFID, NFC, and biometric authentication, integrated with a GSM module for communication.
+This project is a Raspberry Pi-based vehicle access control system using two-factor authentication (2FA) with GSM technology. It's designed to manage and control access to vehicles, enhancing security by requiring authentication before access is granted. The system uses RFID and SMS authentication, integrated with a GSM module for communication.
 
 ## Features
 - **2FA Security**: Enhances vehicle security by requiring a second form of verification.
@@ -30,10 +30,10 @@ This project is a Raspberry Pi-based vehicle access control system using two-fac
    ```bash
    pip install RPi.GPIO pyserial
    ```
-3. **Configuration**: Replace the relay_gpio_pin value in the script with the actual GPIO pin number you're using.
+3. **Configuration**: The relay_gpio_pin value in the script is currently set to GPIO pin number 26.
 
 ## Usage
-1. **Running the Script**: Execute the script on your Raspberry Pi.
+1. **Running the Script**: Execute the script on the Raspberry Pi via SSH.
   ```bash
   python 2fa.py
   ```
