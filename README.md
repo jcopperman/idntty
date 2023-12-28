@@ -33,11 +33,11 @@ This project is a Raspberry Pi-based vehicle access control system using two-fac
 3. **Configuration**: Replace the relay_gpio_pin value in the script with the actual GPIO pin number you're using.
 
 ## Usage
-1. Running the Script: Execute the script on your Raspberry Pi.
+1. **Running the Script**: Execute the script on your Raspberry Pi.
   ```bash
   python 2fa.py
   ```
-2. **Sending Commands: The system will listen for incoming SMS commands to authenticate access.
+2. **Sending Commands**: The system will listen for incoming SMS commands to authenticate access.
 
 ## Functionality
 - **Relay State Change**: Detects changes in the relay state and sends an SMS alert.
