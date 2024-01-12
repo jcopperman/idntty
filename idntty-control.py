@@ -6,9 +6,10 @@ import paho.mqtt.client as mqtt
 import subprocess
 
 # MQTT setup - Your local Mosquitto broker
-mqtt_broker = "100.85.122.12"
+mqtt_broker = "100.64.142.21"
 mqtt_port = 1883  # Default MQTT port (no TLS/SSL)
-mqtt_topic = "asset/security/state"
+mqtt_command_topic = "asset/security/command"
+mqtt_state_topic = "asset/security/state"
 mqtt_client_id = "python_client_id"
 current_state = None  # Global variable to hold the current state of the relay
 
@@ -23,8 +24,17 @@ def on_log(client, userdata, level, buf):
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    # Subscribe with QoS 1
-    client.subscribe(mqtt_topic, 1)
+    # Subscribe with QoS 2
+    # client.subscribe(mqtt_topic, 2)
+    # With command subscribe at QoS 1
+    client.subscribe(mqtt_command_topic, 1)
+
+    # Publish initial status
+    initial_status = "Ready"  # Replace with your default or current status
+    client.publish(mqtt_state_topic, payload=initial_status, qos=1, retain=True)
+    global current_state
+    current_state = initial_status
+    print(f"Published initial status: {initial_status}")
 
 def on_disconnect(client, userdata, rc):
     print(f"Disconnected with result code {rc}")
@@ -34,20 +44,23 @@ def on_disconnect(client, userdata, rc):
 
 def on_message(client, userdata, msg):
     global current_state
-    new_state = msg.payload.decode()
 
-    if new_state != current_state:
-        if new_state == "ARMED":
-            GPIO.output(arming_relay_pin, GPIO.LOW)  # Activate relay (ARMED is active low)
-            print("System Armed - Relay is ON")
-        elif new_state == "DISARMED":
-            GPIO.output(arming_relay_pin, GPIO.HIGH)  # Deactivate relay (DISARMED is active high)
-            print("System Disarmed - Relay is OFF")
+    # Check if the message is from the command topic
+    if msg.topic == mqtt_command_topic:
+        new_state = msg.payload.decode()
 
-        # Publish the new state back to the broker for the Android app to consume
-        client.publish(mqtt_topic, payload=new_state, qos=1, retain=True)  # With QoS 1 and retain flag
+        if new_state != current_state:
+            if new_state == "ARMED":
+                GPIO.output(arming_relay_pin, GPIO.LOW)  # Activate relay (ARMED is active low)
+                print("System Armed - Relay is OFF")
+            elif new_state == "DISARMED":
+                GPIO.output(arming_relay_pin, GPIO.HIGH)  # Deactivate relay (DISARMED is active high)
+                print("System Disarmed - Relay is ON")
 
-        current_state = new_state  # Update the current state
+            # Publish the new state back to the broker on the state topic
+            client.publish(mqtt_state_topic, payload=new_state, qos=1, retain=True)  # With QoS 1 and retain flag
+
+            current_state = new_state  # Update the current state
 
 def check_internet():
     try:
