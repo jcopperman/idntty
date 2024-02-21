@@ -3,7 +3,7 @@
 ## Raspberry Pi  Access Control System
 
 ## Overview
-This project is a Raspberry Pi-based access control system using two-factor authentication (2FA) with GSM technology. It's designed to manage and control access to vehicles, enhancing security by requiring authentication before access is granted. The system uses RFID and SMS authentication, integrated with a GSM module for communication.
+This project is a Raspberry Pi-based access control system using two-factor authentication (2FA) with GSM technology. It's designed to manage and control access to assets, enhancing security by requiring authentication before access is granted. The system uses native mobile authentication, integrated with a GSM module for communication.
 
 ## Features
 - **2FA Security**: Enhances vehicle security by requiring a second form of verification.
