@@ -46,3 +46,6 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 
 ## Author
 Jonathan Opperman
+
+## License
+Licensed under Apache 2.0 - See License.md
