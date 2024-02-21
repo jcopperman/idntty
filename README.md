@@ -1,6 +1,6 @@
 # idntty
 
-## Raspberry Pi  Access Control System
+## Raspberry Pi Identity & Access Control System
 
 ## Overview
 This project is a Raspberry Pi-based access control system using two-factor authentication (2FA) with GSM technology. It's designed to manage and control access to assets, enhancing security by requiring authentication before access is granted. The system uses native mobile authentication, integrated with a GSM module for communication.
