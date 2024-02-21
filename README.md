@@ -23,6 +23,7 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 - Python Serial (for GSM communication)
 - Python Subprocess (for executing shell commands)
 - Python Logging (for logging information and errors)
+- Mosquitto for MQTT protocol
 
 ## Installation & Setup
 1. **Hardware Setup**: Connect the GSM module and relay to the Raspberry Pi according to the GPIO configuration.
@@ -35,14 +36,14 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 ## Usage
 1. **Running the Script**: Execute the script on the Raspberry Pi via SSH.
   ```bash
-  python 2fa.py
+  python idntty-control.py
   ```
-2. **Sending Commands**: The system will listen for incoming SMS commands to authenticate access.
+2. **Sending Commands**: The system will listen for incoming commands to authenticate access via the MQTT broker.
 
 ## Functionality
-- **Relay State Change**: Detects changes in the relay state and sends an SMS alert.
-- **Send SMS**: Sends an SMS when access is attempted.
-- **Recieve SMS**: Listens for incoming SMS messages to authenticate access.
+- **Relay State Change**: Relay triggered by Python function based on topic subscription to switch NO/NC.
+- **Publich Topic**: Publishes the state or location of the system (ARM/DISARM, GPS Coordinates)
+- **Subscribe to Topic**: Listens for incoming messages to authenticate access (ARM/DISARM).
 
 ## Author
 Jonathan Opperman
