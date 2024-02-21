@@ -7,7 +7,7 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 
 ## Features
 - **2FA Security**: Enhances vehicle security by requiring a second form of verification.
-- **SMS Communication**: Send and receive SMS for remote control and monitoring.
+- **GSM Communication**: Send and receive messages over 3G for remote control and monitoring.
 - **Relay Control**: Manage access with a relay module connected to the Raspberry Pi.
 - **Logging**: Keep track of system access and errors through log files.
 
