@@ -23,7 +23,7 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 - Python Serial (for GSM communication)
 - Python Subprocess (for executing shell commands)
 - Python Logging (for logging information and errors)
-- Mosquitto for MQTT protocol
+- Mosquitto for [MQTT](https://mqtt.org/) protocol
 
 ## Installation & Setup
 1. **Hardware Setup**: Connect the GSM module and relay to the Raspberry Pi according to the GPIO configuration.
