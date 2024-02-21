@@ -24,6 +24,7 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 - Python Subprocess (for executing shell commands)
 - Python Logging (for logging information and errors)
 - Mosquitto for [MQTT](https://mqtt.org/) protocol
+- Tailscale's [Tailnet](https://tailscale.com/kb/1136/tailnet) for secure VPN
 
 ## Installation & Setup
 1. **Hardware Setup**: Connect the GSM module and relay to the Raspberry Pi according to the GPIO configuration.
