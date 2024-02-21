@@ -29,9 +29,9 @@ This project is a Raspberry Pi-based access control system using two-factor auth
 ## Installation & Setup
 1. **Hardware Setup**: Connect the GSM module and relay to the Raspberry Pi according to the GPIO configuration.
 2. **Software Setup**: Install the required Python packages if not already installed:
-   ```bash
-   pip install RPi.GPIO pyserial
-   ```
+  ```bash
+  pip install RPi.GPIO pyserial
+  ```
 3. **Configuration**: The relay_gpio_pin value in the script is currently set to GPIO pin number 26.
 
 ## Usage
